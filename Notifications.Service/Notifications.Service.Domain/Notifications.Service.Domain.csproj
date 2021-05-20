@@ -5,8 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Commands\Inputs\" />
+    <Folder Include="Commands\Result\" />
+    <Folder Include="Commands\OutPut\" />
     <Folder Include="Entities\" />
-    <Folder Include="Commands\" />
     <Folder Include="Enums\" />
     <Folder Include="Handlers\" />
     <Folder Include="Services\" />
