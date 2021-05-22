@@ -11,7 +11,5 @@ namespace Notifications.Service.API.Controllers
     {
         [ApiExplorerSettings(IgnoreApi = true)]
         public IActionResult GetResult(GenericCommandResult result) => StatusCode(result.StatusCode, result);
-        [ApiExplorerSettings(IgnoreApi = true)]
-        public IActionResult GetResult(bool result) => StatusCode(1);
     }
 }

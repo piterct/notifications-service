@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Notifications.Service.Domain.Commands.Inputs;
+using Notifications.Service.Domain.Handlers;
 using System;
 using System.Threading.Tasks;
 
@@ -23,12 +24,12 @@ namespace Notifications.Service.API.Controllers
         [HttpPost]
         [AllowAnonymous]
         [Route("sendEmail")]
-        public async ValueTask<IActionResult> SendEmail(PostSendEmailCommandInput command)
+        public async ValueTask<IActionResult> SendEmail(PostSendEmailCommandInput command, [FromServices] NotificationHandler handler)
         {
             try
             {
-
-                return GetResult(true);
+                var result = await handler.Handle(command);
+                return GetResult(result);
             }
             catch (Exception exception)
             {

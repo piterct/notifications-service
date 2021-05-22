@@ -10,6 +10,7 @@ using Microsoft.OpenApi.Models;
 using Notifications.Service.CrossCutting.DependencyInjectionConfig;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -27,6 +28,14 @@ namespace Notifications.Service.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            var builder = new ConfigurationBuilder()
+             .SetBasePath(Directory.GetCurrentDirectory())
+             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+
+            builder.AddEnvironmentVariables();
+            builder.Build();
+
             services.AddControllers();
 
             services.AddResponseCompression();
@@ -59,6 +68,7 @@ namespace Notifications.Service.API
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwagger();
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
             // specifying the Swagger JSON endpoint.
