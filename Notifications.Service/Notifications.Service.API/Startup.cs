@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Notifications.Service.CrossCutting.DependencyInjectionConfig;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,14 @@ namespace Notifications.Service.API
                     Title = "Notifications"
                 });
             });
+
+            ConfigureDI(services, Configuration);
+        }
+
+        public static void ConfigureDI(IServiceCollection services, IConfiguration configuration)
+        {
+            //sign the services to di container   
+            DependencyRegister.AddScoped(services, configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
