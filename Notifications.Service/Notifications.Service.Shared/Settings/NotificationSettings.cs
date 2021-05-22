@@ -2,5 +2,6 @@
 {
     public class NotificationSettings
     {
+        public SendGridSettings SendGridSettings { get; set; }
     }
 }

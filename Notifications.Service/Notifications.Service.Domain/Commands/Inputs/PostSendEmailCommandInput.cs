@@ -6,7 +6,8 @@ namespace Notifications.Service.Domain.Commands.Inputs
 {
     public class PostSendEmailCommandInput : Notifiable, ICommand
     {
-        public string Sender { get; set; }
+        public string From { get; set; }
+        public string FromName { get; set; }
         public string To { get; set; }
         public string Subject { get; set; }
         public string Message { get; set; }
@@ -17,7 +18,8 @@ namespace Notifications.Service.Domain.Commands.Inputs
             AddNotifications(
            new Contract()
                .Requires()
-               .IsNotNull(Sender, "Sender", "This value is not valid!")
+               .IsNotNull(From, "From", "This value is not valid!")
+               .IsNotNull(FromName, "FromName", "This value is not valid!")
                .IsNotNull(To, "Sender", "This value is not valid!")
                .IsNotNull(Subject, "Subject", "This value is not valid!")
                .IsNotNull(Message, "Message", "This value is not valid!")
