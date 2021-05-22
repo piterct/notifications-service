@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Notifications.Service.Domain.Commands.Inputs;
 using System;
 using System.Threading.Tasks;
 
@@ -19,10 +20,10 @@ namespace Notifications.Service.API.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
+        [HttpPost]
         [AllowAnonymous]
         [Route("sendEmail")]
-        public async ValueTask<IActionResult> SendEmail()
+        public async ValueTask<IActionResult> SendEmail(PostSendEmailCommandInput command)
         {
             try
             {

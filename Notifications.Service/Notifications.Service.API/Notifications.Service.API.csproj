@@ -11,6 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Notifications.Service.CrossCutting\Notifications.Service.CrossCutting.csproj" />
+    <ProjectReference Include="..\Notifications.Service.Domain\Notifications.Service.Domain.csproj" />
+    <ProjectReference Include="..\Notifications.Service.Infra\Notifications.Service.Infra.csproj" />
     <ProjectReference Include="..\Notifications.Service.Shared\Notifications.Service.Shared.csproj" />
   </ItemGroup>
 
