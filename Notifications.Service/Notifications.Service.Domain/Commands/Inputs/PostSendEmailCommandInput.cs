@@ -18,11 +18,11 @@ namespace Notifications.Service.Domain.Commands.Inputs
             AddNotifications(
            new Contract()
                .Requires()
-               .IsNotNullOrWhiteSpace(From, "From", "This value is not valid!")
-               .IsNotNullOrWhiteSpace(FromName, "FromName", "This value is not valid!")
-               .IsNotNullOrWhiteSpace(To, "To", "This value is not valid!")
-               .IsNotNullOrWhiteSpace(Subject, "Subject", "This value is not valid!")
-               .IsNotNullOrWhiteSpace(Message, "Message", "This value is not valid!")
+               .IsNotNullOrEmpty(From, "From", "This value is not valid!")
+               .IsNotNullOrEmpty(FromName, "FromName", "This value is not valid!")
+               .IsNotNullOrEmpty(To, "To", "This value is not valid!")
+               .IsNotNullOrEmpty(Subject, "Subject", "This value is not valid!")
+               .IsNotNullOrEmpty(Message, "Message", "This value is not valid!")
                 );
         }
     }
