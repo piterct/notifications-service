@@ -21,9 +21,13 @@ namespace Notifications.Service.Domain.Handlers
             if (command.Invalid)
                 return new GenericCommandResult(false, "Incorrect  data!", null, StatusCodes.Status400BadRequest, command.Notifications);
 
-            await _sendGridService.SendEmail(command.To, command.From, command.FromName, command.Subject, command.Message);
+            bool sendEmail = await _sendGridService.SendEmail(command.To, command.From, command.FromName, command.Subject, command.Message);
 
-            return new GenericCommandResult(true, "Success!", null, StatusCodes.Status200OK, command.Notifications);
+            if (!sendEmail)
+                return new GenericCommandResult(false, "It was not possible to send your email !", null, StatusCodes.Status400BadRequest, command.Notifications);
+
+
+            return new GenericCommandResult(true, "Your email sent successfully!", null, StatusCodes.Status200OK, command.Notifications);
         }
     }
 }
