@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\Notifications.Service.Domain\Notifications.Service.Domain.csproj" />
   </ItemGroup>
 
 </Project>
