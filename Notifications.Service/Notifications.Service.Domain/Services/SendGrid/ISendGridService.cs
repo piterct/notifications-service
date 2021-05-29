@@ -6,6 +6,6 @@ namespace Notifications.Service.Domain.Services.SendGrid
 {
     public interface ISendGridService
     {
-        ValueTask<bool> SendEmail(string destination, string emailFrom, string nameFrom, string title, string body, string cc = "", string cco = "", List<AttachmentFile> attachmentPathList = null);
+        ValueTask<bool> SendEmail(string destination, string emailFrom, string nameFrom, string subject, string body, string cc = "", string cco = "", List<AttachmentFile> attachmentPathList = null);
     }
 }

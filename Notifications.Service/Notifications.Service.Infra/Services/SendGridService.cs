@@ -17,7 +17,7 @@ namespace Notifications.Service.Infra.Services
         {
             _sendGridSettings = sendGridSettings.Value;
         }
-        public async ValueTask<bool> SendEmail(string destination, string emailFrom, string nameFrom, string title, string body, string cc = "", string cco = "", List<AttachmentFile> attachmentPathList = null)
+        public async ValueTask<bool> SendEmail(string destination, string emailFrom, string nameFrom, string subject, string body, string cc = "", string cco = "", List<AttachmentFile> attachmentPathList = null)
         {
             var to = new List<EmailAddress>();
             var apiKey = _sendGridSettings.Password;
@@ -33,7 +33,6 @@ namespace Notifications.Service.Infra.Services
                 }
             }
 
-            var subject = title;
             var htmlContent = body;
             var msg = MailHelper.CreateSingleEmailToMultipleRecipients(from, to, subject, string.Empty, htmlContent, true);
 
