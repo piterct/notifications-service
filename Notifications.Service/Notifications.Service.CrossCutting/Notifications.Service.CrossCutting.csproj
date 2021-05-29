@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Notifications.Service.Domain\Notifications.Service.Domain.csproj" />
+    <ProjectReference Include="..\Notifications.Service.Infra\Notifications.Service.Infra.csproj" />
   </ItemGroup>
 
 </Project>

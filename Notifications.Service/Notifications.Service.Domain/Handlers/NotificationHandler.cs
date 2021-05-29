@@ -1,6 +1,7 @@
 ﻿using Flunt.Notifications;
 using Microsoft.AspNetCore.Http;
 using Notifications.Service.Domain.Commands.Inputs;
+using Notifications.Service.Domain.Services.SendGrid;
 using Notifications.Service.Shared.Commands;
 using System.Threading.Tasks;
 
@@ -8,6 +9,12 @@ namespace Notifications.Service.Domain.Handlers
 {
     public class NotificationHandler : Notifiable
     {
+        private readonly ISendGridService _sendGridService;
+
+        public NotificationHandler()
+        {
+
+        }
         public async ValueTask<GenericCommandResult> Handle(PostSendEmailCommandInput command)
         {
             command.Validate();
