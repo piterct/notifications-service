@@ -4,6 +4,7 @@ using Notifications.Service.Domain.Services.SendGrid;
 using Notifications.Service.Shared.Settings;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,15 +14,15 @@ namespace Notifications.Service.Infra.Services
     public class SendGridService : ISendGridService
     {
         private readonly SendGridSettings _sendGridSettings;
-        public SendGridService(IOptions<SendGridSettings> sendGridSettings)
+        public SendGridService(IOptions<NotificationSettings> notificationSettings)
         {
-            _sendGridSettings = sendGridSettings.Value;
+            _sendGridSettings = notificationSettings.Value.SendGridSettings;
         }
         public async ValueTask<bool> SendEmail(string destination, string emailFrom, string nameFrom, string subject, string body, string cc = "", string cco = "", List<AttachmentFile> attachmentPathList = null)
         {
             var to = new List<EmailAddress>();
-            var apiKey = _sendGridSettings.Password;
-            var client = new SendGridClient(_sendGridSettings.Password);
+            var apiKey =  _sendGridSettings.Password;
+            var client = new SendGridClient(apiKey);
             var from = new EmailAddress(emailFrom, nameFrom);
 
             var arrayDestination = destination.Split(";");

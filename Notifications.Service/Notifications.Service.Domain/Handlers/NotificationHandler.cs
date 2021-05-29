@@ -24,7 +24,7 @@ namespace Notifications.Service.Domain.Handlers
             bool sendEmail = await _sendGridService.SendEmail(command.To, command.From, command.FromName, command.Subject, command.Message);
 
             if (!sendEmail)
-                return new GenericCommandResult(false, "It was not possible to send your email !", null, StatusCodes.Status400BadRequest, command.Notifications);
+                return new GenericCommandResult(false, "It was not possible to send your email !", null, StatusCodes.Status403Forbidden, command.Notifications);
 
 
             return new GenericCommandResult(true, "Your email sent successfully!", null, StatusCodes.Status200OK, command.Notifications);
