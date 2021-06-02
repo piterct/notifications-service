@@ -29,5 +29,15 @@ namespace Notifications.Service.Domain.Handlers
 
             return new GenericCommandResult(true, "Your email sent successfully!", null, StatusCodes.Status200OK, command.Notifications);
         }
+
+        public async ValueTask<GenericCommandResult> Handle(PostSendSmsCommmandInput command)
+        {
+            command.Validate();
+            if (command.Invalid)
+                return new GenericCommandResult(false, "Incorrect  data!", null, StatusCodes.Status400BadRequest, command.Notifications);
+
+           
+            return new GenericCommandResult(true, "Your SMS sent successfully!", null, StatusCodes.Status200OK, command.Notifications);
+        }
     }
 }

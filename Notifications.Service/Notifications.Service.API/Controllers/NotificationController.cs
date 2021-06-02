@@ -43,7 +43,7 @@ namespace Notifications.Service.API.Controllers
         [HttpPost]
         [AllowAnonymous]
         [Route("sendSms")]
-        public async ValueTask<IActionResult> SendSms(PostSendEmailCommandInput command, [FromServices] NotificationHandler handler)
+        public async ValueTask<IActionResult> SendSms(PostSendSmsCommmandInput command, [FromServices] NotificationHandler handler)
         {
             try
             {
